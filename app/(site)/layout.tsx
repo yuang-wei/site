@@ -1,6 +1,8 @@
 import { Toaster } from 'sonner'
-import './globals.css'
+import { GeistSans } from "geist/font/sans";
+import { GeistMono } from "geist/font/mono";
 import { getSiteConfig } from './lib/payload'
+import './globals.css'
 
 export async function generateMetadata() {
   const siteConfig = await getSiteConfig()
@@ -13,15 +15,17 @@ export async function generateMetadata() {
   }
 }
 
+const cx = (...classes) => classes.filter(Boolean).join(" ");
+
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
+    <html lang="en" className={cx(GeistSans.variable, GeistMono.variable)}>
       <body className="antialiased flex flex-col items-center justify-center mx-auto">
-        <main className="flex-auto min-w-0 flex flex-col w-full max-w-[640px] px-4 sm:px-6 lg:px-8 pb-20">
+        <main className="flex-auto min-w-0 mt-2 md:mt-6 flex flex-col px-6 sm:px-4 md:px-0 max-w-[640px] w-full">
           {children}
         </main>
         <Toaster
