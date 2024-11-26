@@ -26,26 +26,28 @@ export const generatePreviewPath = ({ collection, slug }: Props) => {
     encodedParams.append(key, value)
   })
 
-  return `/next/preview?${encodedParams.toString()}`
+  return slug
 }
 
-export const adminPreview = {
-  livePreview: {
-    url: ({ data }) => {
-      const path = generatePreviewPath({
-        slug: typeof data?.slug === 'string' ? data.slug : '',
-        collection: 'posts',
-      })
+export const getAdminPreview = function (collection: CollectionSlug) {
+  return {
+    livePreview: {
+      url: ({ data }) => {
+        const path = generatePreviewPath({
+          slug: typeof data?.slug === 'string' ? data.slug : '',
+          collection,
+        })
 
-      return `${getServerSideURL()}${path}`
+        return `${getServerSideURL()}${path}`
+      },
     },
-  },
-  preview: (data) => {
-    const path = generatePreviewPath({
-      slug: typeof data?.slug === 'string' ? data.slug : '',
-      collection: 'posts',
-    })
+    // preview: (data) => {
+    //   const path = generatePreviewPath({
+    //     slug: typeof data?.slug === 'string' ? data.slug : '',
+    //     collection,
+    //   })
 
-    return `${getServerSideURL()}${path}`
-  },
+    //   return `${getServerSideURL()}${path}`
+    // },
+  }
 }

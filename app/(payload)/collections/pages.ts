@@ -1,5 +1,5 @@
 import { CollectionConfig } from "payload";
-import { adminPreview } from "../lib/preview";
+import { getAdminPreview } from "../lib/preview";
 import { getContentFiledWithMarkdown } from "../fields/content";
 import { getSlugField } from "../fields/slug";
 
@@ -8,7 +8,7 @@ export const Pages: CollectionConfig = {
   admin: {
     defaultColumns: ['title', 'slug', 'updatedAt'],
     useAsTitle: 'title',
-    ...adminPreview,
+    ...getAdminPreview('pages'),
   },
   fields: [
     {
