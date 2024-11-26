@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { useActionState, useCallback, useEffect } from "react";
 import { Button } from "@site/components/ui/button";
 import { toast } from "sonner";
@@ -12,7 +11,7 @@ export default function Login() {
 
   const [state, formAction, isPending] = useActionState(
     useCallback(
-      async (previousState, formData) => {
+      async (_, formData) => {
         const email = formData.get('email')
         const password = formData.get('password')
         const { errors, user } = await (await fetch("/api/users/login", {

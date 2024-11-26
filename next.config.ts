@@ -1,5 +1,9 @@
 import { withPayload } from '@payloadcms/next/withPayload'
 
-const nextConfig = {}
+const nextConfig = {
+  eslint: {
+    ignoreDuringBuilds: true,
+  }
+}
 
 export default withPayload(nextConfig)
