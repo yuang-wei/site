@@ -9,15 +9,15 @@ import Footer from "../components/layouts/footer"
 //   return slugs
 // }
 
-// export async function generateMetadata({ params }) {
-//   const res = await queryBySlug(params)
-//   if (!res || res['slug'] === '') {
-//     return {}
-//   }
-//   return {
-//     title: res['title'],
-//   }
-// }
+export async function generateMetadata({ params }) {
+  const res = await queryBySlug(params)
+  if (!res || res['slug'] === '') {
+    return {}
+  }
+  return {
+    title: res['title'],
+  }
+}
 
 export default async function Page({ params }) {
   const res = await queryBySlug(params)
