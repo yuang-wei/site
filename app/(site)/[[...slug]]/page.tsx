@@ -1,5 +1,7 @@
 import { notFound } from "next/navigation"
 import { getAllPublicContents, queryBySlug } from "../lib/payload"
+import Renderer from "../components/content"
+import Footer from "../components/layouts/footer"
 
 export async function generateStaticParams() {
   const content = await getAllPublicContents()
@@ -9,7 +11,7 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }) {
   const res = await queryBySlug(params)
-  if (!res) {
+  if (!res || res['slug'] === '') {
     return {}
   }
   return {
@@ -24,9 +26,8 @@ export default async function Page({ params }) {
   }
   return (
     <section>
-      <article className="prose prose-quoteless prose-neutral dark:prose-invert">
-        {JSON.stringify(res['content'])}
-      </article>
+      <Renderer node={res['content']['root']} />
+      <Footer />
     </section>
   )
 }

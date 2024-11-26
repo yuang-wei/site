@@ -41,3 +41,8 @@ export const getAllPublicContents = cache(async () => {
   const postsSlugs = posts.docs ? posts.docs.map(({ slug, ...rest }) => ({ slug: 'post/' + slug, ...rest })) : []
   return [...pagesSlugs, ...postsSlugs]
 })
+
+export const getFooter = cache(async () => {
+  const payload = await getPayload({ config })
+  return await payload.findGlobal({ slug: 'footer' })
+})

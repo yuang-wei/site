@@ -20,8 +20,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>
-        {children}
+      <body className="antialiased flex flex-col items-center justify-center mx-auto">
+        <main className="flex-auto min-w-0 flex flex-col w-full max-w-[640px] px-4 sm:px-6 lg:px-8 pb-20">
+          {children}
+        </main>
         <Toaster
           toastOptions={{
             classNames: {
