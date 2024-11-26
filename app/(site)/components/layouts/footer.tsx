@@ -5,6 +5,7 @@ const YEAR = new Date().getFullYear();
 export default async function Footer() {
   const footerConfig = await getFooter()
   const siteConfig = await getSiteConfig()
+  if (!siteConfig) return null
   return (
     <small className="flex items-center justify-between lg:mt-24 mt-16 text-[#1C1C1C] dark:text-[#D4D4D4] ">
       <span className="no-underline flex gap-2 items-center">

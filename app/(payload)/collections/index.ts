@@ -1,11 +1,11 @@
-import { Journals } from "./journal"
-import { Media } from "./media"
-import { Notes } from "./note"
+import { Journals } from "./journals"
+import { Media } from "./medias"
+import { Notes } from "./notes"
 import { Pages } from "./pages"
-import { Posts } from "./post"
+import { Posts } from "./posts"
 import { Tags } from "./tags"
-import { Users } from "./user"
-import { Todos } from "./todo"
+import { Users } from "./users"
+import { Todos } from "./todos"
 
 export default [
   Todos,

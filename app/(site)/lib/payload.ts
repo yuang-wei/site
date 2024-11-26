@@ -20,29 +20,42 @@ export const queryBySlug = cache(async (params) => {
 })
 
 export const getSiteConfig = cache(async () => {
-  const payload = await getPayload({ config })
-  const siteConfig = await payload.findGlobal({ slug: 'site' })
-  return siteConfig
+  try {
+    const payload = await getPayload({ config })
+    const siteConfig = await payload.findGlobal({ slug: 'site' })
+    return siteConfig
+  } catch (err) {
+    return null
+  }
 })
 
 export const getAllPublicContents = cache(async () => {
   const payload = await getPayload({ config })
   const searchCollections: CollectionSlug[] = ['pages', 'posts']
-  const [pages, posts] = await Promise.all(searchCollections.map(collection => (payload.find({
-    collection,
-    draft: false,
-    limit: 1000,
-  }))))
+  try {
+    const [pages, posts] = await Promise.all(searchCollections.map(collection => (payload.find({
+      collection,
+      draft: false,
+      limit: 1000,
+    }))))
 
-  if (!pages.docs) return []
-  // @ts-ignore
-  const pagesSlugs = pages.docs.map(({ slug, ...rest }) => ({ slug: slug === '' ? '/' : slug, ...rest }))
-  // @ts-ignore
-  const postsSlugs = posts.docs ? posts.docs.map(({ slug, ...rest }) => ({ slug: 'post/' + slug, ...rest })) : []
-  return [...pagesSlugs, ...postsSlugs]
+    if (!pages.docs) return []
+    // @ts-ignore
+    const pagesSlugs = pages.docs.map(({ slug, ...rest }) => ({ slug: slug === '' ? '/' : slug, ...rest }))
+    if (!posts.docs) return pagesSlugs
+    // @ts-ignore
+    const postsSlugs = posts.docs ? posts.docs.map(({ slug, ...rest }) => ({ slug: 'post/' + slug, ...rest })) : []
+    return [...pagesSlugs, ...postsSlugs]
+  } catch (err) {
+    return []
+  }
 })
 
 export const getFooter = cache(async () => {
-  const payload = await getPayload({ config })
-  return await payload.findGlobal({ slug: 'footer' })
+  try {
+    const payload = await getPayload({ config })
+    return await payload.findGlobal({ slug: 'footer' })
+  } catch (err) {
+    return null
+  }
 })
