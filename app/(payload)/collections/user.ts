@@ -12,28 +12,24 @@ export const Users: CollectionConfig = {
       name: 'name',
       type: 'text',
     },
-    // {
-    //   name: 'user-role',
-    //   type: 'radio',
-    //   options: [
-    //     {
-    //       label: 'Admin',
-    //       value: 'admin',
-    //     },
-    //     {
-    //       label: 'Reader',
-    //       value: 'reader',
-    //     },
-    //     {
-    //       label: 'Visitor',
-    //       value: 'visitor',
-    //     },
-    //   ],
-    //   defaultValue: 'mint',
-    //   admin: {
-    //     layout: 'horizontal',
-    //   },
-    // },
+    {
+      name: 'role',
+      type: 'radio',
+      options: [
+        {
+          label: 'Admin',
+          value: 'admin',
+        },
+        {
+          label: 'Visitor',
+          value: 'visitor',
+        },
+      ],
+      defaultValue: 'admin',
+      admin: {
+        layout: 'horizontal',
+      },
+    },
   ],
   timestamps: true,
 }

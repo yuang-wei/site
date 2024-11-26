@@ -20,6 +20,8 @@
     ],
     "paths": {
       "@/*": ["./*"],
+      "@site/*": ["./app/(site)/*"],
+      "@payload/*": ["./app/(payload)/*"],
       "@payload-config": ["./app/(payload)/payload.config.ts"]
     }
   },

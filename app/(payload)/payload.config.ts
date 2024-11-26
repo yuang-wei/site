@@ -6,6 +6,7 @@ import sharp from 'sharp';
 import collections from './collections';
 import globals from './globals';
 import { getServerSideURL } from './lib/urls';
+import s3 from './plugins/s3';
 
 const db = process.env.NODE_ENV === 'development' ? postgresAdapter({
   pool: {
@@ -25,19 +26,13 @@ export default buildConfig({
     defaultLocale: 'en',
   },
   plugins: [
-    s3Storage({
-      collections: {
-        media: true,
-      },
-      bucket: process.env.S3_BUCKET,
-      config: {
-        endpoint: `${process.env.R2_ENDPOINT}/media`,
-        credentials: {
-          accessKeyId: process.env.S3_ACCESS_KEY_ID,
-          secretAccessKey: process.env.S3_SECRET_ACCESS_KEY,
-        },
-        region: 'auto',
-      },
-    }),
+    s3,
   ],
+  admin: {
+    components: {
+      beforeDashboard: [
+        '@payload/components/statistics'
+      ],
+    },
+  },
 })

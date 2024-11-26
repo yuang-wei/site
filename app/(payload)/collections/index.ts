@@ -5,13 +5,15 @@ import { Pages } from "./page"
 import { Posts } from "./post"
 import { Tags } from "./tags"
 import { Users } from "./user"
+import { Todos } from "./todo"
 
 export default [
-  Users,
-  Media,
-  Posts,
-  Tags,
-  Pages,
+  Todos,
+  Notes,
   Journals,
-  Notes
+  Pages,
+  Posts,
+  Media,
+  Tags,
+  Users,
 ]

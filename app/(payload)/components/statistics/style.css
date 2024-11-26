@@ -1,0 +1,50 @@
+/* ContributionHeatmap.module.css */
+.container {
+  background: #22272d;
+  color: #adbac7;
+  border-radius: 3px;
+  padding: 1rem;
+  overflow: hidden;
+}
+
+.calendar {
+  margin-bottom: 1rem;
+}
+
+.controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.button {
+  padding: 6px 12px;
+  font-size: 14px;
+  background-color: #373e47;
+  color: #adbac7;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.button:hover {
+  background-color: #444c56;
+}
+
+.legend {
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+  color: #768390;
+}
+
+.legendGraph {
+  display: inline-block;
+  margin: 0 4px;
+}

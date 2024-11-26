@@ -1,4 +1,5 @@
 import { CollectionSlug } from 'payload'
+import { getServerSideURL } from './urls'
 
 const collectionPrefixMap: Partial<Record<CollectionSlug, string>> = {
   posts: '/posts',
@@ -26,4 +27,25 @@ export const generatePreviewPath = ({ collection, slug }: Props) => {
   })
 
   return `/next/preview?${encodedParams.toString()}`
+}
+
+export const adminPreview = {
+  livePreview: {
+    url: ({ data }) => {
+      const path = generatePreviewPath({
+        slug: typeof data?.slug === 'string' ? data.slug : '',
+        collection: 'posts',
+      })
+
+      return `${getServerSideURL()}${path}`
+    },
+  },
+  preview: (data) => {
+    const path = generatePreviewPath({
+      slug: typeof data?.slug === 'string' ? data.slug : '',
+      collection: 'posts',
+    })
+
+    return `${getServerSideURL()}${path}`
+  },
 }
