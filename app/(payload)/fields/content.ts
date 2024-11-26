@@ -10,24 +10,7 @@ export const getContentFiledWithMarkdown = ({ localized = false }): Field[] => {
       editor: lexicalEditor,
       label: false,
       localized,
-      required: true,
+      required: false,
     },
-    // {
-    //   name: 'markdown-content',
-    //   type: 'text',
-    //   localized,
-    //   admin: {
-    //     readOnly: true,
-    //     hidden: true,
-    //   },
-    //   hooks: {
-    //     beforeValidate: [
-    //       async ({ siblingData }) => {
-    //         if (siblingData.content) return lexicalToMarkdown(siblingData.content);
-    //         return null;
-    //       }
-    //     ]
-    //   }
-    // }
   ]
 }
