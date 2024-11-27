@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation"
 import { queryBySlug } from "../lib/payload"
-import Renderer from "../components/content"
+import Renderer from "../components/render"
 import Footer from "../components/layouts/footer"
 
 // export async function generateStaticParams() {

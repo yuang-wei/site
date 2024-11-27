@@ -1,6 +1,7 @@
 import { CollectionConfig } from "payload";
 import dayjs from 'dayjs';
 import { getContentFiledWithMarkdown } from "../fields/content";
+import { getSlugField } from "../fields/slug";
 
 export const Journals: CollectionConfig = {
   slug: 'journals',
@@ -14,6 +15,9 @@ export const Journals: CollectionConfig = {
       name: 'title',
       type: 'text',
       required: false,
+      admin: {
+        position: 'sidebar'
+      },
       hooks: {
         beforeValidate: [
           async ({ data, value }) => {
@@ -25,6 +29,18 @@ export const Journals: CollectionConfig = {
         ]
       }
     },
+    ...getSlugField(),
     ...getContentFiledWithMarkdown({ localized: false }),
+    {
+      name: 'Memos',
+      type: 'array',
+      fields: [
+        {
+          name: 'memo',
+          type: 'upload',
+          relationTo: 'media',
+        }
+      ],
+    }
   ]
 }
