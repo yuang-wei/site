@@ -1,5 +1,4 @@
 import {
-  FixedToolbarFeature,
   HeadingFeature,
   HorizontalRuleFeature,
   InlineToolbarFeature,
@@ -19,14 +18,14 @@ import {
   InlineCodeFeature,
   SuperscriptFeature,
   AlignFeature,
-  TreeViewFeature
 } from "@payloadcms/richtext-lexical";
+import { YoutubeFeature } from "../blocks/youtube";
 
 export default lexicalEditor({
-  features: ({ rootFeatures }) => ([
+  features: ({ rootFeatures }) => [
     ...rootFeatures,
     HeadingFeature({
-      enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6']
+      enabledHeadingSizes: ["h1", "h2", "h3", "h4", "h5", "h6"],
     }),
     // BlocksFeature({ blocks: [Banner, Code, MediaBlock] }),
     // FixedToolbarFeature(),
@@ -48,5 +47,6 @@ export default lexicalEditor({
     BlockquoteFeature(),
     InlineToolbarFeature(),
     UploadFeature(),
-  ])
-})
+    // YoutubeFeature(),
+  ],
+});
