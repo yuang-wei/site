@@ -30,17 +30,6 @@ export const Journals: CollectionConfig = {
       }
     },
     ...getSlugField(),
-    ...getContentFiledWithMarkdown({ localized: false }),
-    {
-      name: 'Memos',
-      type: 'array',
-      fields: [
-        {
-          name: 'memo',
-          type: 'upload',
-          relationTo: 'media',
-        }
-      ],
-    }
+    ...getContentFiledWithMarkdown({ localized: false })
   ]
 }

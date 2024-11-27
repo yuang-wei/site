@@ -1,5 +1,6 @@
 import { CollectionConfig } from "payload";
 import { getContentFiledWithMarkdown } from "../fields/content";
+import { getSlugField } from "../fields/slug";
 
 export const Notes: CollectionConfig = {
   slug: 'notes',
@@ -28,6 +29,7 @@ export const Notes: CollectionConfig = {
         ]
       }
     },
+    ...getSlugField(),
     {
       name: 'tags',
       type: 'relationship',
