@@ -44,6 +44,13 @@ export const Notes: CollectionConfig = {
         position: 'sidebar',
       },
     },
+    {
+      name: 'evergreen',
+      type: 'checkbox',
+      admin: {
+        position: 'sidebar',
+      },
+    },
     ...getContentFiledWithMarkdown({ localized: false })
   ]
 }
