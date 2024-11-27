@@ -28,6 +28,22 @@ export const Notes: CollectionConfig = {
         ]
       }
     },
+    {
+      name: 'tags',
+      type: 'relationship',
+      admin: {
+        position: 'sidebar',
+      },
+      hasMany: true,
+      relationTo: 'tags',
+    },
+    {
+      name: 'source',
+      type: 'text',
+      admin: {
+        position: 'sidebar',
+      },
+    },
     ...getContentFiledWithMarkdown({ localized: false })
   ]
 }

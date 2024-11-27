@@ -18,7 +18,23 @@ export const Posts: CollectionConfig = {
       required: true,
       localized: true,
     },
+    {
+      name: 'tags',
+      type: 'relationship',
+      admin: {
+        position: 'sidebar',
+      },
+      hasMany: true,
+      relationTo: 'tags',
+    },
     ...getSlugField(),
-    ...getContentFiledWithMarkdown({ localized: true })
+    ...getContentFiledWithMarkdown({ localized: true }),
+    {
+      name: 'pinned',
+      type: 'checkbox',
+      admin: {
+        position: 'sidebar',
+      },
+    }
   ]
 }
