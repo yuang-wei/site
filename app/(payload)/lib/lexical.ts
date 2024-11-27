@@ -13,7 +13,13 @@ import {
   RelationshipFeature,
   BlockquoteFeature,
   UploadFeature,
-  OrderedListFeature
+  OrderedListFeature,
+  UnderlineFeature,
+  StrikethroughFeature,
+  InlineCodeFeature,
+  SuperscriptFeature,
+  AlignFeature,
+  TreeViewFeature
 } from "@payloadcms/richtext-lexical";
 
 export default lexicalEditor({
@@ -23,8 +29,13 @@ export default lexicalEditor({
       enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6']
     }),
     // BlocksFeature({ blocks: [Banner, Code, MediaBlock] }),
-    FixedToolbarFeature(),
+    // FixedToolbarFeature(),
+    UnderlineFeature(),
+    StrikethroughFeature(),
     InlineToolbarFeature(),
+    InlineCodeFeature(),
+    SuperscriptFeature(),
+    AlignFeature(),
     HorizontalRuleFeature(),
     BoldFeature(),
     ParagraphFeature(),
@@ -36,6 +47,6 @@ export default lexicalEditor({
     RelationshipFeature(),
     BlockquoteFeature(),
     InlineToolbarFeature(),
-    UploadFeature()
+    UploadFeature(),
   ])
 })
