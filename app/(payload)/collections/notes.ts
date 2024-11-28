@@ -3,16 +3,16 @@ import { getContentFiledWithMarkdown } from "../fields/content";
 import { getSlugField } from "../fields/slug";
 
 export const Notes: CollectionConfig = {
-  slug: 'notes',
+  slug: "notes",
   admin: {
-    defaultColumns: ['title', 'createdAt'],
-    useAsTitle: 'title',
+    defaultColumns: ["title", "type", "createdAt"],
+    useAsTitle: "title",
     hideAPIURL: true,
   },
   fields: [
     {
-      name: 'title',
-      type: 'text',
+      name: "title",
+      type: "text",
       required: true,
       admin: {
         readOnly: true,
@@ -22,37 +22,49 @@ export const Notes: CollectionConfig = {
         beforeValidate: [
           async ({ siblingData }) => {
             if (siblingData.content) {
-              return siblingData.content.root.children[0].children[0].text
-            };
+              return siblingData.content.root.children[0].children[0].text;
+            }
             return null;
-          }
-        ]
-      }
+          },
+        ],
+      },
     },
     ...getSlugField(),
     {
-      name: 'tags',
-      type: 'relationship',
+      name: "tags",
+      type: "relationship",
       admin: {
-        position: 'sidebar',
+        position: "sidebar",
       },
       hasMany: true,
-      relationTo: 'tags',
+      relationTo: "tags",
     },
     {
-      name: 'source',
-      type: 'text',
+      name: "source",
+      type: "text",
       admin: {
-        position: 'sidebar',
+        position: "sidebar",
       },
     },
     {
-      name: 'evergreen',
-      type: 'checkbox',
+      name: "type",
+      type: "radio",
+      options: [
+        {
+          label: "Fleeting note",
+          value: "fleeting",
+        },
+        {
+          label: "Evergreen note",
+          value: "evergreen",
+        },
+      ],
+      defaultValue: "fleeting",
       admin: {
-        position: 'sidebar',
+        layout: "horizontal",
+        position: "sidebar",
       },
     },
-    ...getContentFiledWithMarkdown({ localized: false })
-  ]
-}
+    ...getContentFiledWithMarkdown({ localized: false }),
+  ],
+};
