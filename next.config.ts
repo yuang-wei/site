@@ -1,4 +1,5 @@
 import { withPayload } from '@payloadcms/next/withPayload'
+import withPWA from 'next-pwa';
 
 const nextConfig = {
   eslint: {
@@ -6,4 +7,4 @@ const nextConfig = {
   }
 }
 
-export default withPayload(nextConfig)
+export default withPayload(withPWA(nextConfig))
