@@ -6,5 +6,12 @@ const nextConfig = {
     ignoreDuringBuilds: true,
   }
 }
+const pwaConfig = withPWA({})
 
-export default withPayload(withPWA(nextConfig))
+const payloadConfig = withPayload({})
+
+export default {
+  ...pwaConfig,
+  ...nextConfig,
+  ...payloadConfig,
+}
