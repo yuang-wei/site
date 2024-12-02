@@ -9,13 +9,11 @@ import { metaData, navItems } from "../config";
 export function Navbar() {
   return (
     <nav className="lg:mb-14 mb-8">
-      <div className="flex flex-col md:flex-row md:items-center justify-between">
-        <div className="flex items-center">
-          <Link href="/" className="text-2xl font-medium tracking-tight">
-            {metaData.title}
-          </Link>
-        </div>
-        <div className="flex flex-row gap-4 mt-6 md:mt-0 md:ml-auto items-center">
+      <div className="flex items-center justify-between">
+        <Link href="/" className="text-2xl font-medium tracking-tight">
+          {metaData.title}
+        </Link>
+        <div className="flex flex-row gap-4 items-center">
           {Object.entries(navItems).map(([path, { name }]) => (
             <Link
               key={path}
@@ -54,23 +52,21 @@ export const ArticleNavbar = ({ title }) => {
       transition-all duration-300 ease-in-out
       ${show ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0'}
     `}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
-          <div className="flex items-center">
-            <h1 className="text-xl font-bold">{title}</h1>
-          </div>
-          <div className="hidden md:block">
-            <div className="ml-10 flex items-baseline space-x-6">
-              {Object.entries(navItems).map(([path, { name }]) => (
-                <Link
-                  key={path}
-                  href={path}
-                  className="transition-all hover:text-neutral-800 dark:hover:text-neutral-200 flex align-middle relative"
-                >
-                  {name}
-                </Link>
-              ))}
-            </div>
+      <div className="flex items-center justify-between h-16">
+        <div className="flex items-center">
+          <h1 className="title font-medium text-2xl tracking-tight">{title}</h1>
+        </div>
+        <div className="block">
+          <div className="ml-10 flex items-baseline space-x-6">
+            {Object.entries(navItems).map(([path, { name }]) => (
+              <Link
+                key={path}
+                href={path}
+                className="transition-all hover:text-neutral-800 dark:hover:text-neutral-200 flex align-middle relative"
+              >
+                {name}
+              </Link>
+            ))}
           </div>
         </div>
       </div>
